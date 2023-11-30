@@ -31,45 +31,15 @@
     </style>
 
     <!-- Include the Confetti.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/canvas-confetti.min.js"></script>
-</head>
-<body>
-    <div id="particles-js"></div> <!-- Add this line for particles container -->
 
-    <h1>Tebrikler, QR'ı okutan koca yürekli!</h1>
-    <p>Özge'nin sana hediyesi var. Kazanmak için aşağıdaki metni doldur.</p>
-    <input type="text" id="firstName" placeholder="Ad">
-    <br>
-    <input type="text" id="lastName" placeholder="Soyad">
-    <br>
-    <input type="tel" id="phoneNumber" placeholder="Telefon Numarası">
-    <br>
-    <input type="email" id="emailAddress" placeholder="Mail Adresi">
-    <br>
-    <!-- Change the button to trigger celebration -->
-    <button onclick="celebrate()">Gönder</button>
-
+    <!-- Automatic Celebration Script -->
     <script>
-        // Your existing script
-        function submitForm() {
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var phoneNumber = document.getElementById('phoneNumber').value;
-            var emailAddress = document.getElementById('emailAddress').value;
+        document.addEventListener("DOMContentLoaded", function() {
+            celebrate();
+        });
 
-            if (firstName && lastName && phoneNumber && emailAddress) {
-                alert('Bilgileriniz gönderildi:\n' +
-                      'Ad: ' + firstName + '\n' +
-                      'Soyad: ' + lastName + '\n' +
-                      'Telefon: ' + phoneNumber + '\n' +
-                      'Mail: ' + emailAddress);
-                // Bu veriyi bir sunucuya gönderebilir veya başka işlemler yapabilirsiniz.
-            } else {
-                alert('Lütfen tüm bilgileri eksiksiz girin.');
-            }
-        }
-
-        // Celebration function with confetti
         function celebrate() {
             var duration = 10 * 1000;
             var animationEnd = Date.now() + duration;
@@ -92,6 +62,48 @@
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
             }, 250);
         }
+    </script>
+</head>
+<body>
+    <div id="particles-js"></div> <!-- Add this line for particles container -->
+
+    <h1>Tebrikler, QR'ı okutan koca yürekli!</h1>
+    <p>Özge'nin sana hediyesi var. Kazanmak için aşağıdaki metni doldur.</p>
+    <input type="text" id="firstName" placeholder="Ad">
+    <br>
+    <input type="text" id="lastName" placeholder="Soyad">
+    <br>
+    <input type="tel" id="phoneNumber" placeholder="Telefon Numarası">
+    <br>
+    <input type="email" id="emailAddress" placeholder="Mail Adresi">
+    <br>
+    <!-- Remove the button -->
+    <!-- <button onclick="celebrate()">Gönder</button> -->
+
+    <!-- Your existing form submission script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Your existing form submission script
+            function submitForm() {
+                var firstName = document.getElementById('firstName').value;
+                var lastName = document.getElementById('lastName').value;
+                var phoneNumber = document.getElementById('phoneNumber').value;
+                var emailAddress = document.getElementById('emailAddress').value;
+
+                if (firstName && lastName && phoneNumber && emailAddress) {
+                    alert('Bilgileriniz gönderildi:\n' +
+                          'Ad: ' + firstName + '\n' +
+                          'Soyad: ' + lastName + '\n' +
+                          'Telefon: ' + phoneNumber + '\n' +
+                          'Mail: ' + emailAddress);
+                    // Bu veriyi bir sunucuya gönderebilir veya başka işlemler yapabilirsiniz.
+                } else {
+                    alert('Lütfen tüm bilgileri eksiksiz girin.');
+                }
+            }
+
+            submitForm(); // Call the form submission function automatically
+        });
     </script>
 </body>
 </html>
