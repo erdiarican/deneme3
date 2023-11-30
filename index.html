@@ -1,106 +1,73 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Özge'nin Hediyesi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-            background-color: #301409; /* Red: 48, Green: 20, Blue: 9 */
-            color: #D2B155; /* Red: 210, Green: 177, Blue: 85 */
-        }
-        input {
-            padding: 10px;
-            margin: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        h1 {
-            font-size: 36px; /* Increase the font size to make it larger */
-            color: #D2B155; /* Red: 210, Green: 177, Blue: 85 */
-        }
-    </style>
-
-    <!-- Include the Confetti.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/canvas-confetti.min.js"></script>
-
-    <!-- Automatic Celebration Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            celebrate();
-        });
-
-        function celebrate() {
-            var duration = 10 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
-            var interval = setInterval(function() {
-                var timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-
-                var particleCount = 50 * (timeLeft / duration);
-                // since particles fall down, start a bit higher than random
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
-        }
-    </script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Özge'nin Hediyesi</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           text-align: center;
+           margin: 50px;
+           background-color: #301409; /* Red: 48, Green: 20, Blue: 9 */
+           color: #D2B155; /* Red: 210, Green: 177, Blue: 85 */
+       }
+       input {
+           padding: 10px;
+           margin: 10px;
+       }
+       button {
+           padding: 10px 20px;
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+       }
+       h1 {
+           font-size: 36px; /* Increase the font size to make it larger */
+           color: #D2B155; /* Red: 210, Green: 177, Blue: 85 */
+       }
+   </style>
 </head>
 <body>
-    <div id="particles-js"></div> <!-- Add this line for particles container -->
+   <div id="particles-js"></div> <!-- Add this line for particles container -->
 
-    <h1>Tebrikler, QR'ı okutan koca yürekli!</h1>
-    <p>Özge'nin sana hediyesi var. Kazanmak için aşağıdaki metni doldur.</p>
-    <input type="text" id="firstName" placeholder="Ad">
-    <br>
-    <input type="text" id="lastName" placeholder="Soyad">
-    <br>
-    <input type="tel" id="phoneNumber" placeholder="Telefon Numarası">
-    <br>
-    <input type="email" id="emailAddress" placeholder="Mail Adresi">
-    <br>
+   <h1>Tebrikler, QR'ı okutan koca yürekli!</h1>
+   <p>Özge'nin sana hediyesi var. Kazanmak için aşağıdaki metni doldur.</p>
+   <input type="text" id="firstName" placeholder="Ad">
+   <br>
+   <input type="text" id="lastName" placeholder="Soyad">
+   <br>
+   <input type="tel" id="phoneNumber" placeholder="Telefon Numarası">
+   <br>
+   <input type="email" id="emailAddress" placeholder="Mail Adresi">
+   <br>
+   <button onclick="celebrate()">Gönder</button>
 
-    <!-- Your existing form submission script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Your existing form submission script
-            function submitForm() {
-                var firstName = document.getElementById('firstName').value;
-                var lastName = document.getElementById('lastName').value;
-                var phoneNumber = document.getElementById('phoneNumber').value;
-                var emailAddress = document.getElementById('emailAddress').value;
+   <script>
+       function celebrate() {
+           var duration = 10 * 1000;
+           var animationEnd = Date.now() + duration;
+           var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-                if (firstName && lastName && phoneNumber && emailAddress) {
-                    alert('Bilgileriniz gönderildi:\n' +
-                          'Ad: ' + firstName + '\n' +
-                          'Soyad: ' + lastName + '\n' +
-                          'Telefon: ' + phoneNumber + '\n' +
-                          'Mail: ' + emailAddress);
-                    // Bu veriyi bir sunucuya gönderebilir veya başka işlemler yapabilirsiniz.
-                } else {
-                    alert('Lütfen tüm bilgileri eksiksiz girin.');
-                }
-            }
+           function randomInRange(min, max) {
+               return Math.random() * (max - min) + min;
+           }
 
-            submitForm(); // Call the form submission function automatically
-        });
-    </script>
+           var interval = setInterval(function() {
+               var timeLeft = animationEnd - Date.now();
+
+               if (timeLeft <= 0) {
+                   return clearInterval(interval);
+               }
+
+               var particleCount = 50 * (timeLeft / duration);
+               // since particles fall down, start a bit higher than random
+               confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+               confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+           }, 250);
+       }
+   </script>
 </body>
 </html>
