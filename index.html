@@ -46,8 +46,10 @@
     <br>
     <button onclick="celebrate()">Gönder</button>
 
+    <!-- Automatically start confetti on page load -->
     <script>
-        function celebrate() {
+        // Function to start confetti
+        function startConfetti() {
             var duration = 10 * 1000;
             var animationEnd = Date.now() + duration;
             var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
@@ -69,6 +71,12 @@
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
             }, 250);
         }
+
+        // Call the function when the page is loaded
+        window.onload = startConfetti;
     </script>
+
+    <!-- Place the confetti script here -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/canvas-confetti.min.js"></script>
 </body>
 </html>
