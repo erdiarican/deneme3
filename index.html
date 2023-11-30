@@ -29,34 +29,7 @@
             color: #D2B155; /* Red: 210, Green: 177, Blue: 85 */
         }
     </style>
-    <!-- Place this script before the closing </body> tag -->
-<!-- Place this script before the closing </body> tag -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
-<script>
-    function celebrate() {
-        var duration = 10 * 1000;
-        var animationEnd = Date.now() + duration;
-        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-        function randomInRange(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        var interval = setInterval(function() {
-            var timeLeft = animationEnd - Date.now();
-
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
-
-            var particleCount = 50 * (timeLeft / duration);
-            // since particles fall down, start a bit higher than random
-            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-        }, 250);
-    }
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
 </head>
 <body>
     <div id="particles-js"></div> <!-- Add this line for particles container -->
@@ -71,32 +44,37 @@
     <br>
     <input type="email" id="emailAddress" placeholder="Mail Adresi">
     <br>
-    <button onclick="celebrate()">Gönder</button>
+    <!-- Remove the button -->
+    <!-- <button onclick="celebrate()">Gönder</button> -->
 
-    <!-- Function to start confetti -->
+    <!-- Script to start confetti automatically on page load -->
     <script>
-        function celebrate() {
-            var duration = 10 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+        document.addEventListener('DOMContentLoaded', function() {
+            celebrate();
 
-            function randomInRange(min, max) {
-                return Math.random() * (max - min) + min;
-            }
+            function celebrate() {
+                var duration = 10 * 1000;
+                var animationEnd = Date.now() + duration;
+                var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-            var interval = setInterval(function() {
-                var timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
+                function randomInRange(min, max) {
+                    return Math.random() * (max - min) + min;
                 }
 
-                var particleCount = 50 * (timeLeft / duration);
-                // since particles fall down, start a bit higher than random
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
-        }
+                var interval = setInterval(function() {
+                    var timeLeft = animationEnd - Date.now();
+
+                    if (timeLeft <= 0) {
+                        return clearInterval(interval);
+                    }
+
+                    var particleCount = 50 * (timeLeft / duration);
+                    // since particles fall down, start a bit higher than random
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                }, 250);
+            }
+        });
     </script>
 </body>
 </html>
